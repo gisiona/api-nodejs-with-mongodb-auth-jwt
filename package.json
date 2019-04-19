@@ -1,0 +1,32 @@
+{
+  "name": "api-nodejs-with-mongodb-auth-jwt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.2",
+    "nodemon": "^1.18.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gisiona/api-nodejs-with-mongodb-auth-jwt.git"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "mongodb",
+    "jwt"
+  ],
+  "author": "Gisiona Costa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gisiona/api-nodejs-with-mongodb-auth-jwt/issues"
+  },
+  "homepage": "https://github.com/Gisiona/api-nodejs-with-mongodb-auth-jwt#readme"
+}
