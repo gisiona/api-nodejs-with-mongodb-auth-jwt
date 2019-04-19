@@ -8,7 +8,7 @@ const userRouters = require('./routers/userRouters');
 const indexRouters = require('./routers/indexRouters');
 
 // CONFIGURACAO DA CONEXAO COM O BANCO DE DADOS
-const URL = 'mongodb+srv://adminapinodemongodb:SUASENHA@cluster0-df8rr.mongodb.net/test?retryWrites=true';
+const URL = 'mongodb+srv://adminapinodemongodb:13579aabbc@@cluster0-df8rr.mongodb.net/test?retryWrites=true';
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(URL, options);
@@ -33,15 +33,15 @@ app.use(bodyParser.json);
 
 
 // CONFIGURACAO DAS ROTAS
-//app.use('/', indexRouters);
+app.use('/', indexRouters);
 app.use('/users', userRouters );
 
-
+/*
 app.get('/', (req, res) => {
     return res.send({ mensagem: 'API está rodando na porta 3000 GRT'});
 });
 
-/*
+
 app.post('/', (req, res) => {
     return res.send({ mensagem: 'API está rodando na porta 3000 POSP'});
 });
