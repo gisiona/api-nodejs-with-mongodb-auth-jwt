@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const config = require('../config/config');
 
 const auth = (req, res, next) => {
     const token_header = req.headers.auth;
@@ -7,7 +7,7 @@ const auth = (req, res, next) => {
     if(!token_header){
         return res.send({retorno: {codigo: 403 ,error: 'Token não enviado, autenticação recusada.'}});
     }
-    jwt.verify(token_header,'CHAVE_SECRETA', (error, decoded) => {
+    jwt.verify(token_header, config.jwt_pass, (error, decoded) => {
         if(error){
             return res.send({retorno: {codigo: 403 ,error: 'Token inválido.'}});
         }
@@ -15,13 +15,4 @@ const auth = (req, res, next) => {
         return next();
     });
 }
-
-
-
-const geraToken = () => {
-    return jwt.sign({id: 123}, "CHAVE_SECRETA", {expiresIn: '7d'});
-}
-
-
-
 module.exports = auth;

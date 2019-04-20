@@ -2,14 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
+const config = require('./config/config');
 
 const indexRouters = require('./routers/indexRouters');
 const userRouters = require('./routers/userRouters');
-//const tokenRouters = require('./routers/tokenRouters');
 const tokenRouters = require('./routers/tokenRouters');
 
+
 // CONFIGURACAO DA CONEXAO COM O BANCO DE DADOS
-const URL = 'mongodb+srv://adminapinodemongodb:SUASENHA@cluster0-df8rr.mongodb.net/test?retryWrites=true';
+const URL = config.url_bd;
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(URL, options);

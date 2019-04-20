@@ -3,11 +3,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/authMiddle')
 const users = require('../model/userModel');
+const config = require('../config/config');
 const router = express.Router();
 
 
 const createUserToken = (userID) => {
-    return jwt.sign({id: userID}, "CHAVE_SECRETA", {expiresIn: '7d'});
+    return jwt.sign({id: userID}, config.jwt_pass , {expiresIn: config.jwt_expired_in});
 }
 
 // REFATORADO PARA UTILIZAÇÃO DO ASYNC AWAIT.
@@ -105,7 +106,7 @@ router.post('/auth', auth, async (req, res) => {
         console.log('password_ok ' + pass_ok)
         
         if(!pass_ok){
-            return res.status(400).send({retorno: {codigo: 400, error: 'Erro ao autentitar usuário.'}});
+            return res.status(400).send({retorno: {codigo: 403, error: 'Erro ao autentitar usuário.'}});
         }
         user.password = undefined;
         return res.status(200).send({usuario: user, retorno:{codigo: 200, mensagem: 'Usuário autenticado com sucesso.' }});
