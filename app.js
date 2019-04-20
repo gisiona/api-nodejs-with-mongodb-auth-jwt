@@ -5,9 +5,11 @@ const app = express();
 
 const indexRouters = require('./routers/indexRouters');
 const userRouters = require('./routers/userRouters');
+//const tokenRouters = require('./routers/tokenRouters');
+const tokenRouters = require('./routers/tokenRouters');
 
 // CONFIGURACAO DA CONEXAO COM O BANCO DE DADOS
-const URL = 'mongodb+srv://adminapinodemongodb:13579aabbc@@cluster0-df8rr.mongodb.net/test?retryWrites=true';
+const URL = 'mongodb+srv://adminapinodemongodb:SUASENHA@cluster0-df8rr.mongodb.net/test?retryWrites=true';
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(URL, options);
@@ -32,6 +34,7 @@ app.use(bodyParser.json());
 // CONFIGURACAO DAS ROTAS
 app.use('/', indexRouters);
 app.use('/users', userRouters );
+app.use('/token', tokenRouters);
 
 // PORTA EM O SERVER ESTA RESPONDENDO
 app.listen(3000);
