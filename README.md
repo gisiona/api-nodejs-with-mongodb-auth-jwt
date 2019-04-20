@@ -1,5 +1,5 @@
 # api-nodejs-with-mongodb-auth-jwt
-Criando uma API em Node JS com mongodb e autenticação com JWT
+Criando uma API em Node JS com mongodb e autenticação com JWT, apenas para estudo do NodeJS.
 
 # bibliotecas utilizadas neste projeto de API.
   * Nodemon
