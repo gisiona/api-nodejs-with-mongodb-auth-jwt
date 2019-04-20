@@ -7,13 +7,13 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     users.find({}, (error, data) => {
-        console.log(data);
-        if(error){
-            return res.status(401).send({error: 'Ocorreu um erro na consulta dos usuários.' });
-        }
+        
+        if(error) {
+            return res.status(401).send({error: 'Ocorreu um erro na consulta dos usuários.' });       
+        } 
         return res.status(200).send(data);
-    });
-    //return res.send({ mensagem: 'API está rodando na porta 3000 GET rota de usuário'});
+    });    
+    //return res.status(200).send({ mensagem: 'API está rodando na porta 3000 GET rota de usuário'});
 });
 
 /*
@@ -22,14 +22,18 @@ router.post('/', (req, res) => {
 });
 */
 
+
 router.post('/create', (req, res) => {
-    //const objUser = req.body;
-    const {email, password } = req.body;
-    if(email || password){
+    const objUser = req.body;
+    console.log(objUser);
+    //const {email, password } = req.body;
+    if(!objUser.body.email || !objUser.body.password){
         return res.status(401).send({ error: 'Dados insuficientes'});
     }
 
-    users.findOne({email}, (error, data) => {
+    const email = req.body.email;
+
+    users.findOne({email: email}, (error, data) => {
         if(error){
             return res.status(401).send({ error: 'Erro ao consultar usuário' });            
         }
