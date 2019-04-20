@@ -7,7 +7,7 @@ const indexRouters = require('./routers/indexRouters');
 const userRouters = require('./routers/userRouters');
 
 // CONFIGURACAO DA CONEXAO COM O BANCO DE DADOS
-const URL = 'mongodb+srv://adminapinodemongodb:SUASENHA@cluster0-df8rr.mongodb.net/test?retryWrites=true';
+const URL = 'mongodb+srv://adminapinodemongodb:13579aabbc@@cluster0-df8rr.mongodb.net/test?retryWrites=true';
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true };
 
 mongoose.connect(URL, options);
@@ -25,7 +25,6 @@ mongoose.connection.on('disconnected', () => {
     console.log('APLICAÇÃO DISCONECTADA COM SUCESSO DO BANCO DE DADOS ');
 });
 
-
 // CONFIGURACAO DO BODY-PARSER
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -37,5 +36,5 @@ app.use('/users', userRouters );
 // PORTA EM O SERVER ESTA RESPONDENDO
 app.listen(3000);
 
-console.log('API RODANDO OK');
+console.log('API RODANDO OK NA PORTA 3000');
 module.exports = app;
